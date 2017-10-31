@@ -95,7 +95,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Readme.md" />
     <None Include="Resources\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
