@@ -11,16 +11,16 @@ Also, platform support is very important. This program runs exactly the same on 
 # Profiles format
 The program uses a simple XML-file for representing a profile.
 
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <profile>
-      <name>Doom</name>
-      <paths>
-        <path mount-as="C">@../../Games/doom</path>
-      </paths>
-      <run>DOOM.EXE</run>
-    </profile>
-	```
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<profile>
+  <name>Doom</name>
+  <paths>
+    <path mount-as="C">@../../Games/doom</path>
+  </paths>
+  <run>DOOM.EXE</run>
+</profile>
+```
 
 Example content of *Doom.sdbpx*
 
@@ -29,17 +29,17 @@ The application generates an appropriate DOSBox-configuration file (.conf) out o
 ## Overriding configuration values
 You may need to override DOSBox-configuration values. In this case, you can add the *<overrides/>* element to the profile and set the values as follows.
 
-    ```xml
-    <overrides>
-        <item name="SECTION.NAME">VALUE</item>
-    </overrides>
-	```
+```xml
+<overrides>
+    <item name="SECTION.NAME">VALUE</item>
+</overrides>
+```
 
 For example, if you want to set the value of the **output** key from section **sdl** to **direct3d**, you can do so with:
 
-    ```xml
-    <item name="sdl.output">direct3d</item>
-	```
+```xml
+<item name="sdl.output">direct3d</item>
+```
 
 The pattern is the same for any configuration except *autorun*.
 
@@ -49,32 +49,32 @@ There is a configuration file called **SimpleDosboxFrontend.exe.config** which c
 
 The configuration file may look like this:
 
-	```xml
-    <?xml version="1.0" encoding="utf-8" ?>
-    <configuration>
-        <configSections>
-            <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
-                <section name="SimpleDosboxFrontend.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
-            </sectionGroup>
-        </configSections>
-        <applicationSettings>
-            <SimpleDosboxFrontend.Properties.Settings>
-                <setting name="DOSBoxExecutablePathWindows" serializeAs="String">
-                    <value>..\dosbox.exe</value>
-                </setting>
-                <setting name="DOSBoxExecutablePathUnix" serializeAs="String">
-                    <value>dosbox</value>
-                </setting>
-                <setting name="PortableMode" serializeAs="String">
-                    <value>False</value>
-                </setting>
-                <setting name="PortableModeProfileDir" serializeAs="String">
-                    <value>profiles</value>
-                </setting>
-            </SimpleDosboxFrontend.Properties.Settings>
-        </applicationSettings>
-    </configuration>
-	```
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<configSections>
+		<sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+			<section name="SimpleDosboxFrontend.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+		</sectionGroup>
+	</configSections>
+	<applicationSettings>
+		<SimpleDosboxFrontend.Properties.Settings>
+			<setting name="DOSBoxExecutablePathWindows" serializeAs="String">
+				<value>..\dosbox.exe</value>
+			</setting>
+			<setting name="DOSBoxExecutablePathUnix" serializeAs="String">
+				<value>dosbox</value>
+			</setting>
+			<setting name="PortableMode" serializeAs="String">
+				<value>False</value>
+			</setting>
+			<setting name="PortableModeProfileDir" serializeAs="String">
+				<value>profiles</value>
+			</setting>
+		</SimpleDosboxFrontend.Properties.Settings>
+	</applicationSettings>
+</configuration>
+```
 
 ## Settings
 
