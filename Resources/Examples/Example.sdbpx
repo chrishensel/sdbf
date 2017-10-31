@@ -1,0 +1,30 @@
+<profile>
+
+  <!-- Name is the displayed name in the list -->
+  <name>Example</name>
+
+  <!-- The game's developer. -->
+  <developer>Example systems Ltd.</developer>
+
+  <!-- A custom description of the game.-->
+  <description>An example description of this game.</description>
+
+  <!-- Paths used by DOSBox-->
+  <paths>
+    <!-- A path describes a single path that is mounted in DOSBox. -->
+    <!-- Mount-as describes the (single letter) drive that is mounted in DOSBox -->
+    <!-- The value can be either absolute (OS-specific format , "!"), relative to the application directory ("$") or relative to the profiles directory ("@"), followed directly by the path (relative paths must have forward slashes). -->
+    <path mount-as="C">!/opt/DOS</path>
+  </paths>
+
+  <!-- The run settings used by dosbox -->
+  <!-- auto-exit is true by default and exits dosbox when the application has exitted. -->
+  <run auto-exit="true">GAME.EXE</run>
+
+  <!-- Overrides are optional and allow setting values that SDBF doesn't offer specialized support for. -->
+  <overrides>
+    <!-- "name" equals [section].[name], so "sdl.fulldouble" refers to section "[Sdl]" and value "fulldouble". -->
+    <item name="sdl.fulldouble">false</item>
+  </overrides>
+
+</profile>

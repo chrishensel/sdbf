@@ -1,0 +1,6 @@
+﻿namespace SimpleDosboxFrontend
+{
+    class ProfileEmulationSettings
+    {
+    }
+}

@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SimpleDosboxFrontend.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DOSBoxExecutablePathWindows" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\dosbox.exe</Value>
+    </Setting>
+    <Setting Name="DOSBoxExecutablePathUnix" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">dosbox</Value>
+    </Setting>
+    <Setting Name="PortableMode" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PortableModeProfileDir" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">profiles</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
