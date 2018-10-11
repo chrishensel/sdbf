@@ -92,7 +92,7 @@ namespace SimpleDosboxFrontend.Data
 
             if (exists)
             {
-                infoDoc = XDocument.Load(_profilesMetadataFile.FullName, LoadOptions.PreserveWhitespace);
+                infoDoc = XDocument.Load(_profilesMetadataFile.FullName);
             }
             else
             {
