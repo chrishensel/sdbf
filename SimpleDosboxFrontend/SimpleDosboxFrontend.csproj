@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="Common\IconCreator.cs" />
     <Compile Include="Common\IIconCreator.cs" />
+    <Compile Include="Data\IProfile.cs" />
     <Compile Include="Data\ProfileUpdatedEventArgs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Forms\MainForm.cs">

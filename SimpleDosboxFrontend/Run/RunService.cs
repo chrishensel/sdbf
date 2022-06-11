@@ -10,7 +10,7 @@ namespace SimpleDosboxFrontend.Run
 {
     class RunService : IRunService
     {
-        private readonly Dictionary<Process, Profile> _runningProcesses;
+        private readonly Dictionary<Process, IProfile> _runningProcesses;
 
         private IPlatformService Platform
         {
@@ -25,14 +25,14 @@ namespace SimpleDosboxFrontend.Run
 
         public RunService()
         {
-            _runningProcesses = new Dictionary<Process, Profile>();
+            _runningProcesses = new Dictionary<Process, IProfile>();
         }
 
         void IService.Initialize()
         {
         }
 
-        void IRunService.Run(Profile profile)
+        void IRunService.Run(IProfile profile)
         {
             var confFile = Ioc.Get<IConfBuilder>().GetOrCreateConfFile(profile);
 
@@ -65,7 +65,7 @@ namespace SimpleDosboxFrontend.Run
             var proc = (Process)sender;
             proc.Exited -= Process_Exited;
 
-            Profile profile;
+            IProfile profile;
 
             lock (_runningProcesses)
             {

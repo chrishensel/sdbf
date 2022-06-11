@@ -9,9 +9,9 @@ namespace SimpleDosboxFrontend.Data
     {
         event EventHandler<ProfileUpdatedEventArgs> ProfileUpdated;
 
-        IEnumerable<Profile> GetProfiles();
-        void Update(Profile profile);
-        Image GetProfileImage(Profile profile);
-        Image GetPreviewImage(Profile profile);
+        IEnumerable<IProfile> GetProfiles();
+        void Update(IProfile profile);
+        Image GetProfileImage(IProfile profile);
+        Image GetPreviewImage(IProfile profile);
     }
 }

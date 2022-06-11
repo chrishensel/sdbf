@@ -14,7 +14,7 @@ namespace SimpleDosboxFrontend.Run
         {
         }
 
-        FileInfo IConfBuilder.GetOrCreateConfFile(Profile profile)
+        FileInfo IConfBuilder.GetOrCreateConfFile(IProfile profile)
         {
             var confFileName = profile.OriginFile.Directory.FullName;
             confFileName += Path.DirectorySeparatorChar + profile.OriginFile.Name + ConfFileExtension;
@@ -41,7 +41,7 @@ namespace SimpleDosboxFrontend.Run
             return confFile;
         }
 
-        private static void Write(Profile profile, TextWriter writer)
+        private static void Write(IProfile profile, TextWriter writer)
         {
             foreach (var sectionName in DosboxConfig.GetSections())
             {

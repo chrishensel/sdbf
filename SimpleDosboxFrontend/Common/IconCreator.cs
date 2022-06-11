@@ -23,7 +23,7 @@ namespace SimpleDosboxFrontend.Common
         {
         }
 
-        Image IIconCreator.CreateGenericImage(Profile profile)
+        Image IIconCreator.CreateGenericImage(IProfile profile)
         {
             var image = new Bitmap(32, 32);
 
@@ -72,7 +72,7 @@ namespace SimpleDosboxFrontend.Common
             return found;
         }
 
-        private static Color GetBackgroundColor(Profile profile)
+        private static Color GetBackgroundColor(IProfile profile)
         {
             var backgroundColorHash = profile.Name.GetHashCode();
             var r = (byte)(backgroundColorHash >> 24);
@@ -83,7 +83,7 @@ namespace SimpleDosboxFrontend.Common
             return backgroundColor;
         }
 
-        private static string GetAbbreviation(Profile profile)
+        private static string GetAbbreviation(IProfile profile)
         {
             var chars = new List<char>();
             var upperChars = 0;

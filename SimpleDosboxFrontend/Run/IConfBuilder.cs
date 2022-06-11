@@ -6,6 +6,6 @@ namespace SimpleDosboxFrontend.Run
 {
     interface IConfBuilder : IService
     {
-        FileInfo GetOrCreateConfFile(Profile profile);
+        FileInfo GetOrCreateConfFile(IProfile profile);
     }
 }

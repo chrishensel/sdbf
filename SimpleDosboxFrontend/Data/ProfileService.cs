@@ -15,7 +15,7 @@ namespace SimpleDosboxFrontend.Data
         private const string ProfileExtension = ".sdbpx";
         private readonly FileInfo _profilesMetadataFile;
 
-        private HashSet<Profile> _loadedProfiles;
+        private HashSet<IProfile> _loadedProfiles;
 
         public event EventHandler<ProfileUpdatedEventArgs> ProfileUpdated;
 
@@ -26,7 +26,7 @@ namespace SimpleDosboxFrontend.Data
 
         public ProfileService()
         {
-            _loadedProfiles = new HashSet<Profile>();
+            _loadedProfiles = new HashSet<IProfile>();
 
             var profilesMetadataFilePath = Path.Combine(PlatformService.ProfilesDirectory.FullName, "Profiles.Metadata.xml");
             _profilesMetadataFile = new FileInfo(profilesMetadataFilePath);
@@ -34,7 +34,7 @@ namespace SimpleDosboxFrontend.Data
             RescanProfiles();
         }
 
-        private void OnProfileUpdated(Profile profile)
+        private void OnProfileUpdated(IProfile profile)
         {
             ProfileUpdated?.Invoke(this, new ProfileUpdatedEventArgs(profile));
         }
@@ -79,12 +79,12 @@ namespace SimpleDosboxFrontend.Data
         {
         }
 
-        IEnumerable<Profile> IProfileService.GetProfiles()
+        IEnumerable<IProfile> IProfileService.GetProfiles()
         {
             return _loadedProfiles.OrderBy(_ => _.Name);
         }
 
-        void IProfileService.Update(Profile profile)
+        void IProfileService.Update(IProfile profile)
         {
             var exists = _profilesMetadataFile.Exists;
 
@@ -132,7 +132,7 @@ namespace SimpleDosboxFrontend.Data
             OnProfileUpdated(profile);
         }
 
-        private static Profile DeserializeProfile(XDocument xml)
+        private static IProfile DeserializeProfile(XDocument xml)
         {
             var root = xml.Root;
 
@@ -194,7 +194,7 @@ namespace SimpleDosboxFrontend.Data
             return profile;
         }
 
-        private void ApplyMetadataToProfile(XDocument xml, Profile profile)
+        private void ApplyMetadataToProfile(XDocument xml, IProfile profile)
         {
             if (xml == null)
             {
@@ -225,7 +225,7 @@ namespace SimpleDosboxFrontend.Data
             path.OSPath = new DirectoryInfo(osPath);
         }
 
-        Image IProfileService.GetProfileImage(Profile profile)
+        Image IProfileService.GetProfileImage(IProfile profile)
         {
             var imagePath = profile.OriginFile.FullName + ".png";
             var file = new FileInfo(imagePath);
@@ -261,7 +261,7 @@ namespace SimpleDosboxFrontend.Data
             return image;
         }
 
-        Image IProfileService.GetPreviewImage(Profile profile)
+        Image IProfileService.GetPreviewImage(IProfile profile)
         {
             // Capture images are currently only loaded from the "capture" directory.
             var platformService = Ioc.Get<IPlatformService>();

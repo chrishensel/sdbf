@@ -161,7 +161,7 @@ namespace SimpleDosboxFrontend.Forms
                 return;
             }
 
-            var profile = (Profile)list.SelectedItems[0].Tag;
+            var profile = (IProfile)list.SelectedItems[0].Tag;
 
             var text = new StringBuilder();
 
@@ -203,7 +203,7 @@ namespace SimpleDosboxFrontend.Forms
                 return;
             }
 
-            var profile = (Profile)list.SelectedItems[0].Tag;
+            var profile = (IProfile)list.SelectedItems[0].Tag;
 
             var runService = Ioc.Get<IRunService>();
             runService.Run(profile);
@@ -243,7 +243,7 @@ namespace SimpleDosboxFrontend.Forms
             imgCapture.Image = null;
         }
 
-        private void UpdateProfileInList(Profile profile)
+        private void UpdateProfileInList(IProfile profile)
         {
             var target = this.FindControl<ListView>("list");
 

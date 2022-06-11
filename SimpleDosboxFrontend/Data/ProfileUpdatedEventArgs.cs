@@ -4,9 +4,9 @@ namespace SimpleDosboxFrontend.Data
 {
     class ProfileUpdatedEventArgs : EventArgs
     {
-    	public Profile Profile { get; private set; }
+    	public IProfile Profile { get; private set; }
 
-        public ProfileUpdatedEventArgs(Profile profile)
+        public ProfileUpdatedEventArgs(IProfile profile)
         {
             Profile = profile;
         }

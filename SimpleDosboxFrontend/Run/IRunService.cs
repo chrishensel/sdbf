@@ -5,6 +5,6 @@ namespace SimpleDosboxFrontend.Run
 {
     interface IRunService : IService
     {
-        void Run(Profile profile);
+        void Run(IProfile profile);
     }
 }

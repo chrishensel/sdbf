@@ -5,7 +5,7 @@ using System.IO;
 
 namespace SimpleDosboxFrontend.Data
 {
-    class Profile
+    class Profile : IProfile
     {
         public FileInfo OriginFile { get; set; }
         public string Name { get; set; }

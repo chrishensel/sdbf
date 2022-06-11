@@ -6,6 +6,6 @@ namespace SimpleDosboxFrontend.Common
 {
     interface IIconCreator : IService
     {
-        Image CreateGenericImage(Profile profile);
+        Image CreateGenericImage(IProfile profile);
     }
 }
