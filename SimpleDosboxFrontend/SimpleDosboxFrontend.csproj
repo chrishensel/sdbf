@@ -71,7 +71,6 @@
     <Compile Include="Platform\PlatformService.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Data\ProfileRunInfo.cs" />
-    <Compile Include="Data\ProfileEmulationSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Windows.Forms" />
