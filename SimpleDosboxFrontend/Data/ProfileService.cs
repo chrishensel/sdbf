@@ -234,7 +234,7 @@ namespace SimpleDosboxFrontend.Data
 
             if (!file.Exists)
             {
-                image = IconCreator.CreateGenericImage(profile);
+                image = Ioc.Get<IIconCreator>().CreateGenericImage(profile);
 
                 try
                 {

@@ -34,7 +34,7 @@ namespace SimpleDosboxFrontend.Run
 
         void IRunService.Run(Profile profile)
         {
-            var confFile = ConfBuilder.GetOrCreateConfFile(profile);
+            var confFile = Ioc.Get<IConfBuilder>().GetOrCreateConfFile(profile);
 
             var psi = new ProcessStartInfo
             {

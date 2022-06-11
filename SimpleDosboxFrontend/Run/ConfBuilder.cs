@@ -2,14 +2,19 @@
 using System.IO;
 using SimpleDosboxFrontend.Data;
 using SimpleDosboxFrontend.Platform;
+using SimpleDosboxFrontend.Services;
 
 namespace SimpleDosboxFrontend.Run
 {
-    static class ConfBuilder
+    class ConfBuilder : IConfBuilder
     {
         private const string ConfFileExtension = ".conf";
 
-        internal static FileInfo GetOrCreateConfFile(Profile profile)
+        void IService.Initialize()
+        {
+        }
+
+        FileInfo IConfBuilder.GetOrCreateConfFile(Profile profile)
         {
             var confFileName = profile.OriginFile.Directory.FullName;
             confFileName += Path.DirectorySeparatorChar + profile.OriginFile.Name + ConfFileExtension;
@@ -38,8 +43,6 @@ namespace SimpleDosboxFrontend.Run
 
         private static void Write(Profile profile, TextWriter writer)
         {
-            var platform = Ioc.Get<IPlatformService>();
-
             foreach (var sectionName in DosboxConfig.GetSections())
             {
                 writer.WriteLine("[{0}]", sectionName);

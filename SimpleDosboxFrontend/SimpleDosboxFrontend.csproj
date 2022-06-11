@@ -39,6 +39,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Compile Include="Common\IconCreator.cs" />
+    <Compile Include="Common\IIconCreator.cs" />
     <Compile Include="Data\ProfileUpdatedEventArgs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Forms\MainForm.cs">
@@ -62,6 +63,7 @@
     </Compile>
     <Compile Include="Run\ConfBuilder.cs" />
     <Compile Include="Run\DosboxConfig.cs" />
+    <Compile Include="Run\IConfBuilder.cs" />
     <Compile Include="Run\IRunService.cs" />
     <Compile Include="Common\Ioc.cs" />
     <Compile Include="Run\RunService.cs" />

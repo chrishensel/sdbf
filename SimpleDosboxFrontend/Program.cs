@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using SimpleDosboxFrontend.Common;
 using SimpleDosboxFrontend.Data;
 using SimpleDosboxFrontend.Forms;
 using SimpleDosboxFrontend.Platform;
@@ -22,6 +23,8 @@ namespace SimpleDosboxFrontend
             Ioc.Add<IPlatformService>(platformService);
             platformService.Initialize();
 
+            Ioc.Add<IConfBuilder>(new ConfBuilder());
+            Ioc.Add<IIconCreator>(new IconCreator());
             Ioc.Add<IProfileService>(new ProfileService());
             Ioc.Add<IRunService>(new RunService());
 

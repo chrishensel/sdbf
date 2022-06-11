@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using SimpleDosboxFrontend.Data;
+using SimpleDosboxFrontend.Services;
 
 namespace SimpleDosboxFrontend.Common
 {
-    static class IconCreator
+    class IconCreator : IIconCreator
     {
-        private static readonly StringFormat _stringFormat;
+        private readonly StringFormat _stringFormat;
 
-        static IconCreator()
+        public IconCreator()
         {
             _stringFormat = new StringFormat(StringFormat.GenericDefault)
             {
@@ -18,7 +19,11 @@ namespace SimpleDosboxFrontend.Common
             };
         }
 
-        internal static Image CreateGenericImage(Profile profile)
+        void IService.Initialize()
+        {
+        }
+
+        Image IIconCreator.CreateGenericImage(Profile profile)
         {
             var image = new Bitmap(32, 32);
 
@@ -44,7 +49,7 @@ namespace SimpleDosboxFrontend.Common
             return image;
         }
 
-        private static Font FindSuitableFont(Bitmap image, Graphics graphics, string abbrev)
+        private Font FindSuitableFont(Bitmap image, Graphics graphics, string abbrev)
         {
             Font found = null;
             var currentSize = 64f;
