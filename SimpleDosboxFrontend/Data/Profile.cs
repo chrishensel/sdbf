@@ -13,6 +13,7 @@ namespace SimpleDosboxFrontend.Data
         public string Description { get; set; }
         public int PlayCount { get; set; }
         public TimeSpan PlayDuration { get; set; }
+        public DateTimeOffset LastPlayedAt { get; set; }
         public IList<ProfilePath> Paths { get; set; }
         public ProfileRunInfo RunInfo { get; set; }
         /// <summary>

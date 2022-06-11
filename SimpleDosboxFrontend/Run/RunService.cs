@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using SimpleDosboxFrontend.Data;
 using SimpleDosboxFrontend.Platform;
 using SimpleDosboxFrontend.Services;
@@ -34,9 +36,16 @@ namespace SimpleDosboxFrontend.Run
         {
             var confFile = ConfBuilder.GetOrCreateConfFile(profile);
 
-            var psi = new ProcessStartInfo();
-            psi.FileName = Platform.GetDosboxPath();
-            psi.Arguments = "-conf \"" + confFile.FullName + "\"";
+            var psi = new ProcessStartInfo
+            {
+                FileName = Platform.GetDosboxPath(),
+                Arguments = "-conf \"" + confFile.FullName + "\""
+            };
+
+            if (!File.Exists(psi.FileName))
+            {
+                return;
+            }
 
             lock (_runningProcesses)
             {
@@ -51,7 +60,7 @@ namespace SimpleDosboxFrontend.Run
             }
         }
 
-        private void Process_Exited(object sender, System.EventArgs e)
+        private void Process_Exited(object sender, EventArgs e)
         {
             var proc = (Process)sender;
             proc.Exited -= Process_Exited;
@@ -67,6 +76,7 @@ namespace SimpleDosboxFrontend.Run
 
             profile.PlayCount++;
             profile.PlayDuration += proc.ExitTime - proc.StartTime;
+            profile.LastPlayedAt = DateTimeOffset.UtcNow;
 
             ProfileService.Update(profile);
         }

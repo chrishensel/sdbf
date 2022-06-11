@@ -176,6 +176,12 @@ namespace SimpleDosboxFrontend.Forms
             text.AppendLine();
             text.AppendFormat("Played {0} time(s), {1:hh\\:mm\\:ss} in total", profile.PlayCount, profile.PlayDuration);
 
+            if (profile.LastPlayedAt != default)
+            {
+                text.AppendLine();
+                text.AppendFormat("Last played at {0:F}", profile.LastPlayedAt);
+            }
+
             if (!string.IsNullOrWhiteSpace(profile.Description))
             {
                 text.AppendLine();

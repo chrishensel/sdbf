@@ -103,20 +103,29 @@ namespace SimpleDosboxFrontend.Data
             var game = infoDoc.Root.Elements("profile").FirstOrDefault(_ => _.Attribute("name").Value == profile.Name);
             var gamePlayCount = game?.Element("play-count");
             var gamePlayDuration = game?.Element("play-duration");
+            var lastPlayedAt = game?.Element("last-played-at");
 
             if (game == null)
             {
                 game = new XElement("profile");
+
                 game.Add(new XAttribute("name", profile.Name));
                 gamePlayCount = new XElement("play-count");
+
                 game.Add(gamePlayCount);
                 gamePlayDuration = new XElement("play-duration");
+
                 game.Add(gamePlayDuration);
+                lastPlayedAt = new XElement("last-played-at");
+
+                game.Add(lastPlayedAt);
+
                 infoDoc.Root.Add(game);
             }
 
             gamePlayCount.Value = profile.PlayCount.ToString();
             gamePlayDuration.Value = ((long)profile.PlayDuration.TotalSeconds).ToString();
+            lastPlayedAt.Value = profile.LastPlayedAt.Ticks.ToString();
 
             infoDoc.Save(_profilesMetadataFile.FullName);
 
@@ -201,8 +210,11 @@ namespace SimpleDosboxFrontend.Data
 
             profile.PlayCount = item.TryGetElementValue("play-count", 0);
 
-            var playDuration = Extensions.TryGetElementValue(item, "play-duration", 0L);
+            var playDuration = item.TryGetElementValue("play-duration", 0L);
             profile.PlayDuration = TimeSpan.FromSeconds(playDuration);
+
+            var lastPlayedAt = item.TryGetAttributeValue("last-played-at", 0L);
+            profile.LastPlayedAt = new DateTimeOffset(lastPlayedAt, TimeSpan.Zero);
         }
 
         private static void InterpretPathOS(ProfilePath path)
